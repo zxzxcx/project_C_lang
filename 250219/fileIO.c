@@ -13,10 +13,16 @@ void main()
 	};
     FILE *file = fopen("C:\\Users\\user\\Desktop\\f1.csv", "r"); // 경로
     if (!file) {
-        perror("File open failed");  // 오류 메시지 출력
+        perror("File open failed.\n");  // 오류 메시지 출력
         return; // 파일 열기에 실패하면 종료
     }
 	struct file_Crime crime[500];
+	FILE *fileWrite = fopen("C:\\Users\\user\\Desktop\\f1out.csv", "w");  // 파일 열기 (쓰기 모드)
+	if (fileWrite == NULL) {
+        printf("File open failed.\n");
+        return 1;
+    }
+	fprintf(fileWrite, "소분류,발생,검거,검거비율\n");
 	
     char line[1024];
     char * token;
@@ -48,7 +54,8 @@ void main()
         }
 
         token = strtok(NULL, ",");  // 두 번째 컬럼(발생 수)
-        if (token != NULL) {
+        if (token != NULL) 
+		{
             crime[cnt].outbreak = atoi(token);  // 문자열을 정수로 변환하여 저장
             sum_Outbreak += crime[cnt].outbreak;
             if (crime[cnt].outbreak > outbreak_Max)
@@ -62,9 +69,14 @@ void main()
             	outbreak_Min_Notzero = crime[cnt].outbreak;
 			}
         }
-
+		
         token = strtok(NULL, ",");  // 세 번째 컬럼(체포 수)
-        if (token != NULL) {
+        if (crime[cnt].outbreak == 0 && crime[cnt].arrest == 0)	//발생수 검거수 0이면 스킵 
+        {
+        	continue;
+		}
+        if (token != NULL) 
+		{
             crime[cnt].arrest = atoi(token);  // 문자열을 정수로 변환하여 저장
             sum_Arrest += crime[cnt].arrest;
             
@@ -88,6 +100,13 @@ void main()
 		}        
         
 
+		//파일입력
+		fprintf(fileWrite, "%s,", crime[cnt].name);
+		fprintf(fileWrite, "%d,", crime[cnt].outbreak);
+		fprintf(fileWrite, "%d\n", crime[cnt].arrest);
+		
+		
+		
         // 결과 출력
         printf("crime name: %s, outbreak : %d, arrest : %d, ratio : %.4f\n", 
                crime[cnt].name, crime[cnt].outbreak, crime[cnt].arrest, crime[cnt].ratio);

@@ -11,16 +11,15 @@ void main()
 		int arrest;
 		double ratio;
 	};
-    FILE *file = fopen("C:\\Users\\user\\Desktop\\f1.csv", "r"); // 경로
+    FILE *file = fopen("C:/Users/Administrator/Desktop/f2019.csv", "r"); // 경로
     if (!file) {
         perror("File open failed.\n");  // 오류 메시지 출력
         return; // 파일 열기에 실패하면 종료
     }
 	struct file_Crime crime[500];
-	FILE *fileWrite = fopen("C:\\Users\\user\\Desktop\\f1out.csv", "w");  // 파일 열기 (쓰기 모드)
+	FILE *fileWrite = fopen("C:/Users/Administrator/Desktop/f2019output.csv", "w");  // 파일 열기 (쓰기 모드)
 	if (fileWrite == NULL) {
         printf("File open failed.\n");
-        return 1;
     }
 	fprintf(fileWrite, "소분류,발생,검거,검거비율\n");
 	
@@ -103,8 +102,8 @@ void main()
 		//파일입력
 		fprintf(fileWrite, "%s,", crime[cnt].name);
 		fprintf(fileWrite, "%d,", crime[cnt].outbreak);
-		fprintf(fileWrite, "%d\n", crime[cnt].arrest);
-		
+		fprintf(fileWrite, "%d,", crime[cnt].arrest);
+		fprintf(fileWrite, "%lf\n", crime[cnt].ratio);
 		
 		
         // 결과 출력

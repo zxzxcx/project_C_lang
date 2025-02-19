@@ -26,9 +26,9 @@ void main()
     int cnt_Outbreak_Min = 0;
     int outbreak_Min_Notzero = 9999;
     int cnt_Ratio_Max = 0;
-    double ratio_Max = 3.0;
+    double ratio_Max = 0;
     int cnt_Ratio_Min = 0;
-    double ratio_Min_Notzero = 0;
+    double ratio_Min_Notzero = 9.0;
     int sum_Outbreak = 0;
     int sum_Arrest = 0;
     double total_Ratio;

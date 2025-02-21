@@ -92,7 +92,7 @@ int main() {
 
     // 기록
     
-    for (int col = 0; col < 20; col++) {
+    for (int col = 0; col < 21; col++) {
         fprintf(output_file, "%d,", data[1][col]);
     }
     fprintf(output_file, "\n");

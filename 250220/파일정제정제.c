@@ -73,18 +73,21 @@ int main() {
     char line[MAX_LINE_LENGTH];
     fseek(input_file, 0, SEEK_SET);  // 파일의 처음으로 되돌아가기
     fgets(line, sizeof(line), input_file);
-    fprintf(output_file, "%d_crime,범죄중분류,서울,부산,대구,인천,광주,대전,울산,세종,경기,강원,충청,전라,경상,제주,기타도시,도시이외\n");  // 첫 번째 행 생성
+    fprintf(output_file, "%d_crime,범죄중분류,서울,부산,대구,인천,광주,대전,울산,세종,경기,강원,충북,충남,전북,전남,경북,경남,제주,기타도시,도시이외\n");  // 첫 번째 행 생성
 
     // 합계를 구하기
     fgets(line, sizeof(line), input_file);
 	data[1][10] = sum_indextoindex(data, line, 10, 37, 2018, input_file);
 	data[1][11] = sum_indextoindex(data, line, 38, 44, 2018, input_file);
-	data[1][12] = sum_indextoindex(data, line, 45, 55, 2018, input_file);
-	data[1][13] = sum_indextoindex(data, line, 56, 66, 2018, input_file);
-	data[1][14] = sum_indextoindex(data, line, 67, 84, 2018, input_file);
-	data[1][15] = sum_indextoindex(data, line, 85, 86, 2018, input_file);
-	data[1][16] = sum_indextoindex(data, line, 87, 87, 2018, input_file);
-	data[1][17] = sum_indextoindex(data, line, 88, 88, 2018, input_file);
+	data[1][12] = sum_indextoindex(data, line, 45, 47, 2018, input_file);
+	data[1][13] = sum_indextoindex(data, line, 48, 55, 2018, input_file);
+	data[1][14] = sum_indextoindex(data, line, 56, 61, 2018, input_file);
+	data[1][15] = sum_indextoindex(data, line, 62, 66, 2018, input_file);
+	data[1][16] = sum_indextoindex(data, line, 67, 76, 2018, input_file);
+	data[1][17] = sum_indextoindex(data, line, 77, 84, 2018, input_file);
+	data[1][18] = sum_indextoindex(data, line, 85, 86, 2018, input_file);
+	data[1][19] = sum_indextoindex(data, line, 87, 87, 2018, input_file);
+	data[1][20] = sum_indextoindex(data, line, 88, 88, 2018, input_file);
 	
 
     // '합계'라는 문자열을 추가하고 각 열의 합계를 기록

@@ -90,9 +90,9 @@ int main() {
 	data[1][20] = sum_indextoindex(data, line, 88, 88, 2018, input_file);
 	
 
-    // '합계'라는 문자열을 추가하고 각 열의 합계를 기록
+    // 기록
     
-    for (int col = 0; col < 18; col++) {
+    for (int col = 0; col < 20; col++) {
         fprintf(output_file, "%d,", data[1][col]);
     }
     fprintf(output_file, "\n");
